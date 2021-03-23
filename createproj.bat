@@ -1,17 +1,11 @@
-@echo off
+@echo on
 
-set fn=%1
-set flag=%2
+set vw=%1
+set pn=%2
 cd /d %~dp0
 
-If "%1"=="" (
-    echo "error"
-) else ( 
-    if "%2"=="" (
-        python remote.py %fn% %flag%
-        ) else (
-            if "%2"=="l" (
-                python local.py %fn%
-            )
-        )
-    )
+
+python main.py %vw% %pn%
+
+
+    

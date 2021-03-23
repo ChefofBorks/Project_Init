@@ -21,7 +21,6 @@ token   = os.getenv("TOKEN")
 
 # Get arrgs for repo project setup, exit on error
 try:
-    #print(str(sys.argv))
     view    = str(sys.argv[1])
     pn      = str(sys.argv[2])
 except IndexError as ie:
@@ -33,4 +32,5 @@ path = fp + "\\" + pn
 # Create remote repo on GitHub and return repo information local repo
 repo = rp(un, pw, api_url, token, pn, view)
 
-#lp(path, repo)
+# Create local repo in Python folder and connect to remote repo.
+lp(path, repo, pn)
