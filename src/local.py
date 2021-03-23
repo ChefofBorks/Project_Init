@@ -6,7 +6,7 @@ def local_project(path, repo, pn):
 
     if not os.path.exists(path):
         os.mkdir(path)
-    
+    #////////////Testing IP for connecting local to remote.//////////////
     try:
         os.chdir(path)
         os.system("git init")

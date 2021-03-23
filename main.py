@@ -1,5 +1,6 @@
 import sys
 import os
+import argparse
 from pathlib import Path
 from dotenv import load_dotenv
 from src.local import local_project as lp
@@ -19,11 +20,12 @@ fp      = os.getenv("FILEPATH")
 api_url = os.getenv("API_URL")
 token   = os.getenv("TOKEN")
 
-# Get arrgs for repo project setup, exit on error
+# Get arrgs for repo project setup, exit on error, add in arg parser pieces.////////////////////////
 try:
     view    = str(sys.argv[1])
     pn      = str(sys.argv[2])
-except IndexError as ie:
+except IndexError as err:
+    # ///////////////Need to update try/except for catching args///////////////////////
     sys.exit("Missing key argumets Repo: --Private/--Public and Project Name")
 
 # Concat Project name to path

@@ -22,7 +22,8 @@ def remote_project(un, pw, api_url, token, pn, view):
     except requests.exceptions.RequestException as err:
         raise SystemExit(err)
     
-    # Remote repo add for return to local
+    # Remote repo add for return to local.
+    # If not using ssh Keys replace with https address.
     repo = f"git@github.com:{un}/{pn}.git"
 
     return repo
