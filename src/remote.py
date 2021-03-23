@@ -24,9 +24,9 @@ def remote_project(un, api_url, token, pn, view, key):
         raise SystemExit(err)
     
     # Remote repo add for return to local.
-    if key == "ssh":
+    if key.lower() == "ssh":
         repo = f"git@github.com:{un}/{pn}.git"
-    elif key == "https":
+    elif key.lower() == "https":
         repo = f"https://github.com/{un}/{pn}"
     else:
         sys.exit("Your key for GitHub is not defined as a recognized option \
