@@ -14,11 +14,19 @@ env_path = Path(".", ".env")
 load_dotenv(dotenv_path=env_path)
 
 # Get .env variables
+"""
+Enviroment variable arrgs:
+NAME        = GitHub username
+FILEPATH    = Local machine location for repo storage
+API_URL     = GitHub API URL
+TOKEN       = GitHub Authentication token
+KEY         = GitHub Key setup (HTTPS or SSH URL)
+"""
 un      = os.getenv("NAME")
-pw      = os.getenv("PASSWORD")
 fp      = os.getenv("FILEPATH")
 api_url = os.getenv("API_URL")
 token   = os.getenv("TOKEN")
+key     = os.getenv("KEY")
 
 # Get arrgs for repo project setup, exit on error, add in arg parser pieces.////////////////////////
 try:
@@ -32,7 +40,7 @@ except IndexError as err:
 path = fp + "\\" + pn
 
 # Create remote repo on GitHub and return repo information local repo
-repo = rp(un, pw, api_url, token, pn, view)
+repo = rp(un, api_url, token, pn, view, key)
 
 # Create local repo in Python folder and connect to remote repo.
 lp(path, repo, pn)

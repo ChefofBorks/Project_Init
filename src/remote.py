@@ -1,7 +1,8 @@
+import sys
 import requests
 
 
-def remote_project(un, pw, api_url, token, pn, view):
+def remote_project(un, api_url, token, pn, view, key):
     
     # Set privacy flag based on arg for request
     if "private" in view.lower():
@@ -23,7 +24,12 @@ def remote_project(un, pw, api_url, token, pn, view):
         raise SystemExit(err)
     
     # Remote repo add for return to local.
-    # If not using ssh Keys replace with https address.
-    repo = f"git@github.com:{un}/{pn}.git"
+    if key == "ssh":
+        repo = f"git@github.com:{un}/{pn}.git"
+    elif key == "https":
+        repo = f"https://github.com/{un}/{pn}"
+    else:
+        sys.exit("Your key for GitHub is not defined as a recognized option \
+            in your enviroment variables, please update!")
 
     return repo

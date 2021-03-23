@@ -4,14 +4,15 @@ import os
 
 def local_project(path, repo, pn):
 
+    # Make new directory if it does not already exist
     if not os.path.exists(path):
         os.mkdir(path)
-    #////////////Testing IP for connecting local to remote.//////////////
+
+    # Try creating local report and connect to remote repo
     try:
         os.chdir(path)
         os.system("git init")
         os.system(f"git remote add origin {repo}")
-        print(repo)
         os.system(f"echo '# {pn}'>> README.md")
         os.system("git add .")
         os.system('git commit -m "Initialize Repo"')
