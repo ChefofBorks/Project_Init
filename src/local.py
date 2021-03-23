@@ -10,10 +10,11 @@ def local_project(path, repo, pn):
     try:
         os.chdir(path)
         os.system("git init")
-        os.system("git remote add origin " + repo)
+        os.system(f"git remote add origin {repo}")
+        print(repo)
         os.system(f"echo '# {pn}'>> README.md")
         os.system("git add .")
-        os.system("git commit -m 'Initialize Repo'")
+        os.system('git commit -m "Initialize Repo"')
         os.system("git push origin master")
     except FileExistsError as err:
         raise SystemExit(err)
