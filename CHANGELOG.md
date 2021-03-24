@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.9.5 - Mar 23, 2021
+**Added**
+- Add argparse for parsing commandline arguments to main.py
+
 ## v0.9.0 - Mar 22, 2021
 **Added**
 - Add .sh file for use in bash
