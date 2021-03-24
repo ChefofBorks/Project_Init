@@ -1,12 +1,11 @@
 import sys
 import os
 import argparse
+from typing import Optional, Sequence
 from pathlib import Path
 from dotenv import load_dotenv
 from src.local import local_project as lp
 from src.remote import remote_project as rp
-import pprint
-from typing import Optional, Sequence
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -41,14 +40,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     load_dotenv(dotenv_path=env_path)
 
     # Get .env variables
-    """
-    Enviroment variable arrgs:
-    NAME        = GitHub username
-    FILEPATH    = Local machine location for repo storage
-    API_URL     = GitHub API URL
-    TOKEN       = GitHub Authentication token
-    KEY         = GitHub Key setup (HTTPS or SSH URL)
-    """
     un      = os.getenv("NAME")
     fp      = os.getenv("FILEPATH")
     api_url = os.getenv("API_URL")
