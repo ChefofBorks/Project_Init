@@ -1,17 +1,19 @@
-import sys
+#!/usr/bin/env python
+
 import os
 import argparse
 from typing import Optional, Sequence
 from pathlib import Path
 from dotenv import load_dotenv
-from src.local import local_project as lp
-from src.remote import remote_project as rp
+from project_init import local_project as lp, remote_project as rp
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     
     # Intilaize argparser and set arguments
-    parser = argparse.ArgumentParser(description="Necessary GitHub arguments for new Remote and local repo")
+    parser = argparse.ArgumentParser(
+        description="Necessary GitHub arguments for new Remote and local repo"
+        )
     
     parser.add_argument(
         "-v", "--view", 
@@ -28,7 +30,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         help="Your project Name for Remote and local creation.",
         )
 
-    # Get argpars arguments
+    # Get argparse arguments
     args = parser.parse_args(argv)
     view = args.view
     pn = args.projectname
@@ -47,14 +49,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     key     = os.getenv("KEY")
 
     # Concat Project name to path
-    path = fp + "\\" + pn
-
+    #path = fp + "\\" + pn
+    path = f"{fp}/{pn}"
+    
     # Create remote repo on GitHub and return repo information local repo
     repo = rp(un, api_url, token, pn, view, key)
 
     # Create local repo in Python folder and connect to remote repo.
     lp(path, repo, pn)
-
 
 
 if __name__ == '__main__':
